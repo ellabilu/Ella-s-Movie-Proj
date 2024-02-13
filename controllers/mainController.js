@@ -276,25 +276,7 @@ export const decreaseWatchCount = async (req, res) => {
   }
 };
 
-/*
-export const showMovieInfo = async (req, res) => {
-  const movieId = req.params.id;
 
-  try {
-    const movie = await Movie.findOne({ _id: movieId });
-    if (movie) {
-      res.render('info', { movie });
-    } else {
-      res.status(404).send('Movie not found');
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Error processing request');
-  }
-};
-*/
-
-// for movieDetails.ejs page
 export const showMovieDetails = async (req, res) => {
   
   const movieId = req.params.id;

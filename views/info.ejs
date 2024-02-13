@@ -31,30 +31,9 @@
         </div>
         <div class="details">
           <p>Year: <%= movie.year %></p>
-          <p>Plot: <%= movie.Plot %></p>
           <p>Director: <%= movie.director %></p>
-          <p>Genre: <%= movie.genre %></p>
           <p>Box Office: <%= movie.boxOffice %></p>
-          <p>IMDb Rating: <%= movie.imdbRating %></p>
         </div>
-      </div>
-
-      <!-- Grey box for reviews -->
-      <div class="reviews-box">
-        <h2>Reviews</h2>
-        <!-- Review Form -->
-        <form action="/save" method="POST">
-          <input type="hidden" name="title" value="<%= movie.title %>">
-          <input type="hidden" name="poster" value="<%= movie.poster %>">
-          <input type="hidden" name="director" value="<%= movie.director %>">
-          <input type="hidden" name="year" value="<%= movie.year %>">
-          <input type="hidden" name="boxOffice" value="<%= movie.boxOffice %>">
-          
-          <!-- Add more hidden inputs as needed -->
-
-          <label for="review">Write a Review:</label>
-          <textarea id="review" name="review" rows="4" cols="50"></textarea>
-        </form>
       </div>
     </div>
   </div>
@@ -62,3 +41,4 @@
 </body>
 
 </html>
+

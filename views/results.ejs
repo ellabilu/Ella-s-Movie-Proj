@@ -18,6 +18,7 @@
     }
   </script>
 </head>
+
 <body>
 
   <div class="container">
@@ -36,27 +37,20 @@
           <p>Genre: <%= movie.Genre %></p>
           <p>Box Office: <%= movie.BoxOffice %></p>
           <p>IMDb Rating: <%= movie.imdbRating %></p>
-          <button type="submit">Save</button>
+          <form action="/save" method="POST">
+            <!-- Include input fields for required data -->
+            <input type="text" name="title" value="<%= movie.Title %>" hidden>
+            <input type="text" name="year" value="<%= movie.Year %>" hidden>
+            <input type="text" name="poster" value="<%= movie.Poster %>" hidden>
+            <input type="text" name="director" value="<%= movie.Director %>" hidden>
+            <input type="text" name="boxOffice" value="<%= movie.BoxOffice %>" hidden>
+
+            <!-- Include any other hidden input fields if needed -->
+
+            <!-- Save button -->
+            <button type="submit" class='home'>Save</button>
+          </form>
         </div>
-      </div>
-
-      <!-- Grey box for reviews -->
-      <div class="reviews-box">
-        <h2>Reviews</h2>
-        <!-- Review Form -->
-        <form action="/save" method="POST">
-          <input type="hidden" name="title" value="<%= movie.Title %>">
-          <input type="hidden" name="poster" value="<%= movie.Poster %>">
-          <input type="hidden" name="director" value="<%= movie.Director %>">
-          <input type="hidden" name="year" value="<%= movie.Year %>">
-          <input type="hidden" name="boxOffice" value="<%= movie.BoxOffice %>">
-          
-          <!-- Add more hidden inputs as needed -->
-
-          <label for="review">Write a Review:</label>
-          <textarea id="review" name="review" rows="4" cols="50"></textarea>
-          <button type="submit" onclick="saveReview()">Save</button>
-        </form>
       </div>
     </div>
   </div>
@@ -64,3 +58,4 @@
 </body>
 
 </html>
+

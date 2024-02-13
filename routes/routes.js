@@ -12,7 +12,7 @@ router.post('/save', mainController.saveMovie);
 router.get('/watch/:id', mainController.watchMovie);
 router.post('/watch/:id', mainController.watchMovie);
 router.get('/delete/:id', mainController.deleteMovie);
-//router.post('/delete/:id', mainController.deleteMovie);
+router.post('/delete/:id', mainController.deleteMovie);
 router.post('/watch/:id/decrease', mainController.decreaseWatchCount);
 router.get('/details/:id', mainController.showMovieDetails);
 
@@ -20,14 +20,12 @@ router.get('/details/:id', mainController.showMovieDetails);
 router.post('/sort', mainController.sortMovies);
 router.post('/sort/rating', mainController.sortMovies);
 
-// Review actions
 router.post('/saveReview', mainController.saveReview);
 router.post('/saveReview/:id', mainController.saveReview);
-router.post('/rate/:id', mainController.rateMovie);
+router.post('/rate/:id', mainController.rateMovie); // Include this route for handling movie ratings
 
 // Reviews page
 router.get('/allReviews', mainController.showAllReviews);
-
 export default router;
 
 
