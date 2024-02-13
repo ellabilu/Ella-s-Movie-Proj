@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Database</title>
+  <link rel="stylesheet" href="results.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee+Spice">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue">
+  <script>
+    function saveReview() {
+      try {
+        console.log('Save Review button clicked');
+        // Rest of the code...
+      } catch (error) {
+        console.error('Error in saveReview function:', error);
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="movie-title"><%= movie.Title %></h1>
+
+    <div class="movie-details-container">
+      <!-- Movie Poster and Info -->
+      <div class="movie-details">
+        <div class="poster">
+          <img src="<%= movie.Poster %>" alt="<%= movie.Title %> Poster" class="poster-img">
+        </div>
+        <div class="details">
+          <p>Year: <%= movie.Year %></p>
+          <p>Plot: <%= movie.Plot %></p>
+          <p>Director: <%= movie.Director %></p>
+          <p>Genre: <%= movie.Genre %></p>
+          <p>Box Office: <%= movie.BoxOffice %></p>
+          <p>IMDb Rating: <%= movie.imdbRating %></p>
+          <button type="submit">Save</button>
+        </div>
+      </div>
+
+      <!-- Grey box for reviews -->
+      <div class="reviews-box">
+        <h2>Reviews</h2>
+        <!-- Review Form -->
+        <form action="/save" method="POST">
+          <input type="hidden" name="title" value="<%= movie.Title %>">
+          <input type="hidden" name="poster" value="<%= movie.Poster %>">
+          <input type="hidden" name="director" value="<%= movie.Director %>">
+          <input type="hidden" name="year" value="<%= movie.Year %>">
+          <input type="hidden" name="boxOffice" value="<%= movie.BoxOffice %>">
+          
+          <!-- Add more hidden inputs as needed -->
+
+          <label for="review">Write a Review:</label>
+          <textarea id="review" name="review" rows="4" cols="50"></textarea>
+          <button type="submit" onclick="saveReview()">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <a href="/"><button class='home'>Search For Another Movie</button></a>
+</body>
+
+</html>

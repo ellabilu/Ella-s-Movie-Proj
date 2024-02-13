@@ -1,0 +1,116 @@
+/* Reset default margin and padding */
+body, h1, form {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply a background image with cover and center positioning */
+body {
+    background-image: url('https://images.pexels.com/photos/806880/pexels-photo-806880.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Add this line for a fixed background effect */
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 20px auto;
+    background-color: black;/* Adjusted background color for better visibility */
+    padding: 20px;
+    max-width: 800px;
+    border-radius: 10px; /* Added border radius for rounded corners */
+}
+
+.movie-details {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+img {
+    max-width: 100%; /* Adjusted the max-width to 100% */
+    margin-right: 20px;
+    border-radius: 8px; /* Added border radius for rounded image corners */
+}
+
+/* Apply light blue text color to h1 */
+h1 {
+    color: lightblue;
+    font-family: Bungee Spice, serif;
+    text-align: center;
+    font-size: 60px;
+}
+
+form {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.custom-search .form-control {
+    width: 100%;
+    height: 30px;
+}
+
+button {
+    background-color: lightblue;
+    color: black;
+}
+
+/* Add space between movie cards */
+.white-box {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px; /* Added border radius for rounded corners */
+}
+
+/* Center the buttons and rating text */
+.card-body {
+    text-align: center;
+}
+
+header, section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Adjust margin for h2 */
+h2 {
+    margin-top: 20px;
+}
+
+.custom-search-bar {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.home {
+    display: block;
+    margin: 20px auto; /* Adjusted margin for centering */
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: Bebas Neue, serif;
+    background-color: orangered;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+p {
+    font-family: Bebas Neue, serif;
+    color: white; 
+}

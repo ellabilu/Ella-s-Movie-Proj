@@ -1,0 +1,214 @@
+/* Reset default margin and padding */
+body, h1, form {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply a black background and white text color */
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px; /* Adjust margin as needed */
+}
+
+form {
+    max-width: 500px; /* Set the maximum width as needed */
+    width: 100%;
+    margin: 0 auto; /* Center the search bar */
+}
+
+.custom-search .form-control {
+    width: 100%; /* Adjust the width as needed */
+    max-width: 500px; /* Set a maximum width */
+    margin: 0 auto; /* Center the search bar */
+    height: 30px;
+    display: inline-block; /* Ensure the button is on the same line */
+}
+
+button {
+    background-color: lightblue;
+    color: black;
+    height: 30px; /* Match the height of the search bar */
+    margin-left: 10px; /* Adjust the margin to create space between search bar and button */
+}
+
+/* Apply red text color to alerts */
+.alert-info {
+    color: lightblue;
+}
+
+/* Apply gold background color to the 'Sort' button */
+.btn-warning {
+    background-color: #ffd700;
+}
+
+/* Apply green background color to the 'Watch' button */
+.btn-success {
+    background-color: #28a745;
+}
+
+/* Apply red background color to the 'Delete' button */
+.btn-danger {
+    background-color: #dc3545;
+}
+
+/* Center movie cards */
+.white-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px; /* Add padding for inner spacing */
+    box-sizing: border-box; /* Include padding and border in the width */
+}
+
+/* Set a fixed height for movie posters */
+.card img {
+    max-width: 100%; /* Make the image responsive */
+    max-height: 100%; /* Adjust the height as needed */
+    object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+}
+
+/* Center the movie title */
+.card-title,
+.card-title-centered {
+    text-align: center;
+}
+
+/* Center the buttons and rating text */
+.card-body {
+    text-align: center;
+}
+
+/* Adjust margin between movie cards */
+.row {
+    display: flex;
+    justify-content: center;
+    margin: -15px; /* Adjust negative margin to counteract Bootstrap's column gutter */
+}
+
+h2{
+    font-family: Bebas Neue, serif;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 15px;
+}
+
+h1 {
+    color: lightblue;
+    font-family: Bungee Spice, serif;
+    padding-top: 60px; /* Adjusted padding-top */
+    padding-bottom: 10px; /* Adjusted padding-bottom */
+    font-size: 80px;
+    text-align: center;
+}
+
+h3 {
+    font-family: Bebas Neue, serif;
+    text-align: center;
+    font-size: 20px;
+    font-style: italic;
+    margin-top: -10px; /* Adjusted margin-top */
+}
+
+/* Adjust margin between movie cards */
+.mb-4 {
+    margin-bottom: 1.5rem !important; /* Adjust margin-bottom for each movie card */
+}
+
+/* Set the maximum width for movie cards */
+.white-box {
+    max-width: 300px; /* Adjust maximum width as needed */
+}
+
+/* Center movie cards */
+.white-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px; /* Add padding for inner spacing */
+    box-sizing: border-box; /* Include padding and border in the width */
+}
+
+p{
+    font-family: Bungee Spice, serif;
+}
+
+h5 {
+    font-family: Bebas Neue, serif;
+    font-size: 25px;
+margin-bottom: 0;
+    margin-top: 5px; 
+}
+
+h6 {
+    font-family: 'Bebas Neue', serif;
+    font-size: 20px;
+    margin-bottom: 0; /* Set bottom margin to 0 */
+    margin-top: 0;    /* Set top margin to 0 */
+}
+
+.btn-success.btn-icon {
+    background-color: orange;
+}
+
+label {
+    font-family: Bebas Neue, serif;
+    font-size: 25px;
+    margin-bottom: 5px; 
+    margin-top: 5px; 
+}
+
+.custom-btn {
+    font-family: Bebas Neue, sans-serif;
+    font-size: 16px;
+}
+
+ #flash-messages {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+     text-align: center; 
+     font-family: Bebas Neue, serif; 
+  }
+
+  .alert {
+    background-color: #FFDCA5; /* Light orange background color */
+    border: 0; /* Remove border */
+    color: #000; /* Text color */
+    padding: 15px; /* Add padding for spacing */
+    margin: 0; /* Remove margin */
+  }
+
+.btn-upvote {
+    background-color: lightblue; 
+}
+
+.btn-downvote {
+    background-color: #ffd700;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+}
+
+.btn-info-circle {
+    background-color: orange;
+}
+
+.custom-search-button {
+    height: 100%;
+    background-color: azure;
+}

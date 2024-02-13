@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Database</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy4SvLBE5DIj2BAhDK9gQh5Q6Zbpi6Mda" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee+Spice">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/dist/boxicons.css">
+  <style>
+    /* Add this custom CSS for movie cards */
+    .movie-card {
+      margin: 15px;
+      width: 100%; /* Make each card take 100% width initially */
+      max-width: 300px; /* Set a maximum width for each card */
+    }
+
+    @media (min-width: 576px) {
+      /* Adjust card width for small screens */
+      .movie-card {
+        width: calc(25% - 30px); /* Calculate width for four cards per row with spacing */
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-dark text-white">
+
+  <!-- Header Section -->
+  <header>
+    <h1 class="text-danger">Film Fluff</h1>
+    <h3>Search, save, rate, and review. All here, at Film Fluff.</h3>
+  </header>
+
+  <!-- Search Form Section -->
+  <section>
+    <form class="mt-3 custom-search" action="/search" method="POST">
+      <div class="row">
+        <div class="col">
+          <input type="text" name="movieTitle" class="form-control" placeholder="Search...">
+        </div>
+        <div class="col">
+        <button type="submit" class="btn btn-danger custom-search-button"><box-icon name='movie-play'></box-icon></button>
+    </div>
+      </div>
+    </form>
+  </section>
+
+  <section>
+      <h2 class="mt-4">Your Saved Movies</h2>
+
+
+   <h3 class="mt-3">You've watched <%= totalMovies %> movies a total of <%= totalTimesWatched %> times!</h3>
+
+<div class="row mb-4">
+    <div class="col">
+        <form action="/sort" method="POST">
+            <button type="submit" class="btn btn-upvote custom-btn mb-2">Sort By Times Watched</button>
+        </form>
+    </div>
+    <div class="col">
+        <form action="/sort" method="POST">
+            <input type="hidden" name="sortType" value="rating">
+            <button type="submit" class="btn btn-downvote custom-btn mb-2">Sort by Rating</button>
+        </form>
+    </div>
+    <div class="col">
+        <form action="/sort" method="POST">
+            <input type="hidden" name="sortType" value="alphabetical">
+            <button type="submit" class="btn btn-delete custom-btn mb-2">Sort Alphabetically</button>
+        </form>
+    </div>
+    <div class="col">
+        <form action="/sort" method="POST">
+            <input type="hidden" name="sortType" value="year">
+            <button type="submit" class="btn btn-info-circle custom-btn mb-2">Sort by Year</button>
+        </form>
+    </div>
+</div>
+
+
+
+<div id="flash-messages">
+  <% if (flashMessages.update) { %>
+    <div class="alert alert-info" role="alert">
+      <%= flashMessages.update %>
+    </div>
+  <% } %>
+</div>
+
+
+<!-- Movie Cards Section -->
+<section>
+  <div class="container mt-5">
+    <div class="row">
+      <% savedMovies.forEach((movie, index) => { %>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="white-box">
+            <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster" class="card-img-top" style="height: 300px;">
+            <div class="card-body">
+              <div class="card-title-centered">
+    <h5 class="card-title" style="font-family: Bebas Neue, serif; font-size: 25px; margin-bottom: 0; margin-top: 5px;"><%= movie.title %></h5>
+    <h6 class="card-year" style="margin-bottom: 5px;">(<%= movie.year %>)</h6>
+</div>
+              <p class="card-text" style="margin-bottom: 5px;">Watched: <%= movie.timesWatched %> times</p>
+              <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
+                <div class="col">
+                  <form action="/watch/<%= movie._id %>" method="POST">
+                    <button type="submit" class="btn btn-primary btn-icon"><box-icon name='upvote'></box-icon></button>
+                  </form>
+                </div>
+                <div class="col">
+                  <form action="/watch/<%= movie._id %>/decrease" method="POST">
+                    <button type="submit" class="btn btn-warning btn-icon"><box-icon name='downvote'></box-icon></button>
+                  </form>
+                </div>
+                <div class="col">
+                  <form action="/delete/<%= movie._id %>" method="POST">
+                    <button type="submit" class="btn btn-danger btn-icon"><box-icon name='trash' ></box-icon></button>
+                  </form>
+                </div>
+                <div class="col">
+                 <form action="/details/<%= movie._id %>" method="GET">
+                     <button type="submit" class="btn btn-success btn-icon">
+                     <box-icon name='info-circle' style="color: white !important;"></box-icon>
+                      </button>
+                  </form>
+
+                </div>
+              </div>
+              <% if (movie.ratings && movie.ratings.length > 0) { %>
+                <p class="card-text" style="margin-top: 5px; margin-bottom: 10px;">Rating: <%= movie.ratings.join(', ') %></p>
+              <% } else { %>
+                <form action="/rate/<%= movie._id %>" method="POST">
+                  <div class="form-group">
+                    <label for="rating">Rate:</label>
+                    <select class="form-control" id="rating" name="rating">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary2">★</button>
+                </form>
+              <% } %>
+            </div>
+          </div>
+        </div>
+        <% if ((index + 1) % 4 === 0) { %>
+          </div>
+          <div class="row">
+        <% } %>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <!-- Include Bootstrap and Boxicons scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+    integrity="sha384-eMNCO2OjZC3iiRwe/z6OOB6t0H6OnSmHPd3l6R5cXUwzpAIo6aXtWwqE2E1kCQ"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy4SvLBE5DIj2BAhDK9gQh5Q6Zbpi6Mda"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <script>
+    function redirectToResults(movieIdentifier) {
+        window.location.href = `/results?search=${encodeURIComponent(movieIdentifier)}`;
+    }
+</script>
+<!-- Add this script at the bottom of your HTML -->
+
+
+
+
+</body>
+
+</html>

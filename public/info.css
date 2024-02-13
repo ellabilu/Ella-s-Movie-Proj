@@ -1,0 +1,9 @@
+body {
+    background-image: url('https://images.pexels.com/photos/806880/pexels-photo-806880.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Add this line for a fixed background effect */
+    height: 100vh;
+    margin: 0;
+}

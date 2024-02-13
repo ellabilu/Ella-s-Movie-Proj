@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Database</title>
+  <link rel="stylesheet" href="info.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee+Spice">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue">
+  <script>
+    function saveReview() {
+      try {
+        console.log('Save Review button clicked');
+        // Rest of the code...
+      } catch (error) {
+        console.error('Error in saveReview function:', error);
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="movie-title"><%= movie.title %></h1>
+
+    <div class="movie-details-container">
+      <!-- Movie Poster and Info -->
+      <div class="movie-details">
+        <div class="poster">
+          <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster" class="poster-img">
+        </div>
+        <div class="details">
+          <p>Year: <%= movie.year %></p>
+          <p>Plot: <%= movie.Plot %></p>
+          <p>Director: <%= movie.director %></p>
+          <p>Genre: <%= movie.genre %></p>
+          <p>Box Office: <%= movie.boxOffice %></p>
+          <p>IMDb Rating: <%= movie.imdbRating %></p>
+        </div>
+      </div>
+
+      <!-- Grey box for reviews -->
+      <div class="reviews-box">
+        <h2>Reviews</h2>
+        <!-- Review Form -->
+        <form action="/save" method="POST">
+          <input type="hidden" name="title" value="<%= movie.title %>">
+          <input type="hidden" name="poster" value="<%= movie.poster %>">
+          <input type="hidden" name="director" value="<%= movie.director %>">
+          <input type="hidden" name="year" value="<%= movie.year %>">
+          <input type="hidden" name="boxOffice" value="<%= movie.boxOffice %>">
+          
+          <!-- Add more hidden inputs as needed -->
+
+          <label for="review">Write a Review:</label>
+          <textarea id="review" name="review" rows="4" cols="50"></textarea>
+        </form>
+      </div>
+    </div>
+  </div>
+  <a href="/"><button class='home'>Search For Another Movie</button></a>
+</body>
+
+</html>
